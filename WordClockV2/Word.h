@@ -22,7 +22,7 @@ private:
 	static Word **words;
 	static CRGB *leds;
 
-	TimeRange *timeRange;
+	TimeRange *timeRange = NULL;
 
 	unsigned char start;
 	unsigned char end;
