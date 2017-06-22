@@ -47,13 +47,22 @@ void setup() {
 	Serial.print(F("freeMemory()="));
 	Serial.println(freeMemory());
 #endif
-
 	//Turn off all leds
 	for (int i = 0; i < NUM_LEDS; i++) {
 		leds[i] = CRGB::Black;
 	}
 
+	//Test all the leds one by one
+	for (int i = 0; i < NUM_LEDS; i++) {
+		leds[i] = CRGB::White;
+		FastLED.show();
+		delay(70);
+		leds[i] = CRGB::Black;
+	}
+	
+	//Update to turn off the last led
 	FastLED.show();
+	
 
 	//Leds for words
 	Word::setLeds(leds);
@@ -90,7 +99,7 @@ void setup() {
 
 	words[14] = new Word(44, 46, new HourRange(9, 10));//DIEZ
 	words[15] = new Word(41, 43, new HourRange(10, 11));//ONCE
-	words[16] = new Word(38, 40, new DayMonthExact(DAY_BIRTHDAY, MON_BIRTHDAY));//AÑOS
+	words[16] = new Word(38, 40, new DayMonthExact(DAY_BIRTHDAY, MON_BIRTHDAY));//AÃ‘OS
 	words[16]->setAnimationType(RainbowLetter);
 
 	words[17] = new Word(47, 49, new HourRange(11, 12));//DOCE
